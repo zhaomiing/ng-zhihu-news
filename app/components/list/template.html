@@ -1,4 +1,13 @@
-<h3>今日推荐</h3>
-<div class="news-item" ng-repeat="item in news">
-    <a href="#/detail/{{item.id}}">{{item.title}}</a>
+<!--<div class="news-item well" ng-repeat="item in news">-->
+    <!--<a href="#/detail/{{item.id}}">{{item.title}}</a>-->
+<!--</div>-->
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h5><span class="f-fr s-fade">{{date}}</span>今日推荐 </h5>
+    </div>
+    <ul class="list-group">
+        <li class="list-group-item" ng-repeat="item in news">
+            <a href="#/detail/{{item.id}}">{{item.title}}</a>
+        </li>
+    </ul>
 </div>

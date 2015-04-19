@@ -11,7 +11,7 @@ angular.module('myApp.list', ['ngRoute', 'myApp.list.service'])
 
 .controller('ListCtrl', ['listService', '$scope', function(listService, $scope) {
   listService.get({}, function (news) {
-    $scope.news = news.query.results['stories'];
-    $scope.date = news.query.results['date'];
+    $scope.news = news.query.results.json['stories'];
+    $scope.date = news.query.results.json['date'];
   })
 }]);
