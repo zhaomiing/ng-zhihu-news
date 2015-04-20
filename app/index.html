@@ -34,22 +34,16 @@
     <div class="row">
       <div class="col-md-3"></div>
       <div class="col-md-6">
-        <!--<ul class="menu">-->
-          <!--<li><a href="#/list">list</a></li>-->
-          <!--<li><a href="#/detail">detail</a></li>-->
-          <!--<li><a href="#/comments">comments</a></li>-->
-        <!--</ul>-->
 
         <!--[if lt IE 7]>
         <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
 
-        <div class="content" ng-view></div>
-
-        <!--<div>Angular seed app: v<span app-version></span></div>-->
-        <div class="footer">
-          <p>A ©zhaomiing Project</p>
+        <div class="app-content-wrap">
+          <div class="app-content" ng-view></div>
         </div>
+
+
       </div>
     </div>
     <div class="col-md-3"></div>
@@ -64,14 +58,9 @@
   <script src="bower_components/angular-resource/angular-resource.js"></script>
   <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
   <script src="app.js"></script>
-  <script src="components/list/animation.js"></script>
   <script src="components/list/service.js"></script>
   <script src="components/list/list.js"></script>
-  <!--<script src="components/detail/service.js"></script>-->
   <script src="components/detail/detail.js"></script>
   <script src="components/comments/comments.js"></script>
-  <script src="service/version/version.js"></script>
-  <script src="service/version/version-directive.js"></script>
-  <script src="service/version/interpolate-filter.js"></script>
 </body>
 </html>
