@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('myApp.detail', ['ngRoute', 'ngResource', 'ngSanitize'])
+angular.module('myApp.detail', ['ngRoute', 'myApp.detail.service', 'ngSanitize'])
 
 .config(['$routeProvider', function($routeProvider) {
   $routeProvider.when('/detail/:newsId', {
@@ -9,16 +9,8 @@ angular.module('myApp.detail', ['ngRoute', 'ngResource', 'ngSanitize'])
   });
 }])
 
-.controller('DetailCtrl', ['$routeParams', '$scope', '$resource', '$sanitize', function($routeParams, $scope, $resource) {
-      var detailUrl = 'https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20json%20where%20url=%22http://news-at.zhihu.com/api/4/news/' + $routeParams.newsId + '%22&format=json';
-
-      $resource(detailUrl, {}, {
-        query : {
-          method : 'get'
-        }
-      }).get({}, function (detail) {
-        console.log(detail);
+.controller('DetailCtrl', ['$routeParams', '$scope', 'detailService', '$sanitize', function($routeParams, $scope, detailService) {
+        detailService.readDetails({id : $routeParams.newsId}, function (detail) {
         $scope.detail = detail.query.results.json;
-          //$scope.body = $sanitize.trustAsHtml($scope.detail.body);
       });
 }]);
