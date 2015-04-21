@@ -13,5 +13,5 @@ angular.module('myApp.list', ['ngRoute', 'myApp.list.service'])
   listService.read({}, function (news) {
     $scope.news = news.query.results.json['stories'];
     $scope.date = news.query.results.json['date'];
-  })
+  });
 }]);
