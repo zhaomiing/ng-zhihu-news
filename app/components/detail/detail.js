@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('myApp.detail', ['ngRoute', 'myApp.detail.service', 'myApp.detail.filter', 'ngSanitize'])
+angular.module('myApp.detail', ['ngRoute', 'myApp.detail.service', 'ngSanitize'])
 
 .config(['$routeProvider', function($routeProvider) {
   $routeProvider.when('/detail/:newsId', {
@@ -9,21 +9,10 @@ angular.module('myApp.detail', ['ngRoute', 'myApp.detail.service', 'myApp.detail
   });
 }])
 
-.controller('DetailCtrl', ['$routeParams', '$route', '$scope', 'detailService', '$sanitize',
-    function($routeParams, $route, $scope, detailService) {
-        detailService.readDetails({id : $routeParams.newsId}, function (detail) {
+.controller('DetailCtrl', ['$routeParams', '$route', '$scope', 'getDetail', 'stripImg', '$log',
+    function($routeParams, $route, $scope, getDetail, stripImg, $log) {
+        getDetail.readDetails({id : $routeParams.newsId}, function (detail) {
+            $log.info(detail);
             $scope.detail = stripImg(detail.query.results.json.body);
         });
-        //console.log($route);
 }]);
-
-angular.module('myApp.detail.filter', []).filter('stripImg', function () {
-    return stripImg(input);
-});
-
-function stripImg(input) {
-    var reImg = /<img\s.+src=("http.+")[^>]*>/img,
-        output = input.replace(reImg, '<a href=$1 target="_blank" rel="noreferrer">[图片]</a>');
-
-    return output;
-}
